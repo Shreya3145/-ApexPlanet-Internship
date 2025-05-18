@@ -6,17 +6,16 @@ This repository documents my journey through a Web Development Internship. Here,
 Goal: Create a simple personal webpage using HTML, CSS, and basic JavaScript.
 
 🔧 Features
-Intro section with name, title, and about me
-Skills & interests
-Key achievements and highlights
-Social media links (GitHub & LinkedIn)
-Custom styling with gradients, glow, and pixel art
-Smooth scrolling and a JavaScript alert button
+1. Intro section with name, title, and about me
+2. Skills & interests
+3. Key achievements and highlights
+4. Social media links (GitHub & LinkedIn)
+5. Custom styling with gradients, glow, and pixel art
+6. Smooth scrolling and a JavaScript alert button
 
 📌 Technologies Used
-
-HTML5
-CSS3
-JavaScript
-Font Awesome
-Google Fonts
+1. HTML5
+2. CSS3
+3. JavaScript
+4. Font Awesome
+5. Google Fonts
