@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+    <title>Task 2</title>
+</head>
+<body>
+    <h1>Harry Potter Survey Form</h1>
+    <p>Hello! Fill out this survey if you're bored!<br> We'd love to hear about you</p>
+     <form id="survey-form">
+        <fieldset>
+            <label id="name-label" for="name">Enter your name: <input id="name" type="text" required placeholder="Harry Potter"/></label><br>
+            <label id="email-label" for="email">Mail maybe: <input id="email" type="email" required placeholder="hogwarts@gmail.com"/></label><br>
+            <label id="number-label" for="number">Tell us your fav number: <input id="number" type="number" required min="-2147483647" max="2147483647" placeholder="13"/></label><br>
+        </fieldset>
+        
+        <fieldset>
+            <label id="referrer-label" for="dropdown">How did you hear about us? <br>
+                <select id="dropdown" name="referrer">
+                    <option value="">(select one)</option>
+                    <option value="1">Flying Car</option>
+                    <option value="2">A bunch of owls</option>
+                    <option value="3">The hidden train station</option>
+                    <option value="4">Other</option>
+                </select>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Who are you?</legend>
+            <label for="wizard"><input id="wizard" type="radio" name="type" value="wizard" checked /> Wizard</label><br>
+            <label for="muggles"><input id="muggles" type="radio" name="type" value="muggle" /> Muggle</label><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>What are your favorite things?</legend>
+            <label><input class="inline" id="favorite-things-1" type="checkbox" name="favorite-things" value="wand" /> Voldermort's Wand</label><br>
+            <label><input class="inline" id="favorite-things-2" type="checkbox" name="favorite-things" value="map" /> The Marauder's Map</label><br>
+            <label><input class="inline" id="favorite-things-3" type="checkbox" name="favorite-things" value="basilisk" /> The Basilisk</label><br>
+            <label><input class="inline" id="favorite-things-4" type="checkbox" name="favorite-things" value="chocolateFrog" /> Chocolate Frog</label><br>
+            <label><input class="inline" id="favorite-things-5" type="checkbox" name="favorite-things" value="stone" /> The Resurrection Stone</label><br>
+        </fieldset>
+
+        <fieldset>
+            <label for="comments">Let us know your favorite scene?<br>
+                <textarea id="comments" name="comments" rows="3" cols="30" placeholder="I like the Forbidden Forest scene where..."></textarea>
+            </label>
+        </fieldset>
+
+        <input id="submit" type="submit" value="Submit" /> 
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
