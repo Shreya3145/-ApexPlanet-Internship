@@ -10,6 +10,7 @@ document.getElementById('survey-form').addEventListener('submit', function (e) {
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
     if (!emailPattern.test(email)) {
         alert('Please enter a valid email address.');
         e.preventDefault();
