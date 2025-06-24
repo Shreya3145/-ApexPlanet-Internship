@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.2em;
+        }
+        
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        #taskInput {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e6ed;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        #taskInput:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        #taskList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .task-item {
+            background: #f8fafc;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .task-item:hover {
+            background: #fee;
+            border-left-color: #e74c3c;
+            transform: translateX(5px);
+        }
+        
+        .task-text {
+            flex: 1;
+        }
+        
+        .delete-hint {
+            font-size: 12px;
+            color: #999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .task-item:hover .delete-hint {
+            opacity: 1;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📝 To-Do List</h2>
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Enter a task..." />
+            <button onclick="addTask()">Add Task</button>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        // In-memory storage instead of localStorage
+        let tasks = [];
+
+        const input = document.getElementById("taskInput");
+        const list = document.getElementById("taskList");
+
+        function loadTasks() {
+            list.innerHTML = "";
+            
+            if (tasks.length === 0) {
+                const emptyState = document.createElement("li");
+                emptyState.className = "empty-state";
+                emptyState.textContent = "No tasks yet. Add one above!";
+                list.appendChild(emptyState);
+                return;
+            }
+            
+            tasks.forEach((task, i) => {
+                const li = document.createElement("li");
+                li.className = "task-item";
+                
+                const taskText = document.createElement("span");
+                taskText.className = "task-text";
+                taskText.textContent = task;
+                
+                const deleteHint = document.createElement("span");
+                deleteHint.className = "delete-hint";
+                deleteHint.textContent = "Click to delete";
+                
+                li.appendChild(taskText);
+                li.appendChild(deleteHint);
+                
+                li.onclick = () => {
+                    tasks.splice(i, 1);
+                    loadTasks();
+                };
+                
+                list.appendChild(li);
+            });
+        }
+
+        function addTask() {
+            const task = input.value.trim();
+            if (task !== "") {
+                tasks.push(task);
+                input.value = "";
+                loadTasks();
+            }
+        }
+
+        // Allow Enter key to add tasks
+        input.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                addTask();
+            }
+        });
+
+        // Initialize
+        window.onload = loadTasks;
+    </script>
+</body>
+</html>
